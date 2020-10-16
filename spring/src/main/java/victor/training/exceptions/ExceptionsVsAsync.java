@@ -9,39 +9,23 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.concurrent.*;
 
-@Service
-@RequiredArgsConstructor
 @Slf4j
 public class ExceptionsVsAsync {
-   private final Other other;
 
-
-
-   @PostConstruct
-   public void init() throws ExecutionException, InterruptedException {
-      other.task()
-          .thenApplyAsync(i -> {
-             log.debug("Duplicate");
-             return i * 2;
-          })
-          .exceptionally(t -> -1)
-          .thenAccept(i -> {
-             log.debug("Got " + i);
-          });
-      System.out.println("Done");
+   public static void main(String[] args) {
+      new ExceptionsVsAsync().run();
    }
 
-}
+   private void run() {
+      Integer integer = expensiveTask();
 
-@Component
-class Other {
+      System.out.println(integer);
+   }
 
-   @Async
-   public CompletableFuture<Integer> task() {
-      System.out.println("BUM");
+   public Integer expensiveTask() {
       if (true) {
-         throw new RuntimeException("UAAAA");
+         throw new RuntimeException("Surprise!");
       }
-      return CompletableFuture.completedFuture(1);
+      return 1;
    }
 }
