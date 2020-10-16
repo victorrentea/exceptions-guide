@@ -1,28 +1,50 @@
 package victor.training.exceptions;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import java.util.concurrent.*;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
 public class ExceptionsVsAsync {
+   private final Other other;
+
    // 1: Executors - throw
    // 2: return+future
    // 3: SpringBootApp + async + completable futures
    // 4: completable Future. thenApply( mult 2).exceptionally(-1)
-   public static void main(String[] args) throws ExecutionException, InterruptedException {
-      ExecutorService pool = Executors.newFixedThreadPool(2);
-      Future<Integer> f = pool.submit(() -> {
-         return task();
-      });
-      Integer integer = f.get();
+
+   @PostConstruct
+   public void init() throws ExecutionException, InterruptedException {
+      other.task()
+          .thenApplyAsync(i -> {
+             log.debug("Duplicate");
+             return i * 2;
+          })
+          .exceptionally(t -> -1)
+          .thenAccept(i -> {
+             log.debug("Got " + i);
+          });
       System.out.println("Done");
    }
 
-   private static int task() {
+}
+
+@Component
+class Other {
+
+   @Async
+   public CompletableFuture<Integer> task() {
+      System.out.println("BUM");
       if (true) {
-         throw new RuntimeException();
+         throw new RuntimeException("UAAAA");
       }
-      return 1          ;
+      return CompletableFuture.completedFuture(1);
    }
 }
