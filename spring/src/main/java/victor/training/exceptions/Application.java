@@ -6,17 +6,13 @@ import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.MessageSource;
-import org.springframework.core.task.TaskDecorator;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.*;
 import victor.training.exceptions.MyException.ErrorCode;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.concurrent.Executor;
 
 
 @EnableAsync
@@ -40,11 +36,17 @@ public class Application implements AsyncConfigurer {
 }
 
 @RestController
+@RequiredArgsConstructor
 class HelloController {
+
    @GetMapping("hello")
    public String hello() {
-      throw new MyException(ErrorCode.ERROR1);
+      if (true) {
+         throw new MyException(ErrorCode.ERROR1);
+      }
+      return "Hi";
    }
+
 }
 
 class MyException extends RuntimeException {
@@ -81,18 +83,21 @@ class MyException extends RuntimeException {
 
 @RestControllerAdvice
 @RequiredArgsConstructor
+@Slf4j
 class GlobalExceptionHandler {
    private final MessageSource messageSource;
 
    @ExceptionHandler(Exception.class)
    @ResponseStatus
    public String handle(Exception e, HttpServletRequest request) {
+      log.error(e.getMessage(), e);
       return messageSource.getMessage(e.getMessage(), null, request.getLocale());
    }
 
    @ExceptionHandler(MyException.class)
    @ResponseStatus
    public String handleMy(MyException e, HttpServletRequest request) {
+      log.error(e.getMessage(), e);
       return messageSource.getMessage(e.getCode().name(), null, request.getLocale());
    }
 }

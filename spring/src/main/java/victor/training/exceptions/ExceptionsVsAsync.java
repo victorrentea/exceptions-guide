@@ -15,10 +15,7 @@ import java.util.concurrent.*;
 public class ExceptionsVsAsync {
    private final Other other;
 
-   // 1: Executors - throw
-   // 2: return+future
-   // 3: SpringBootApp + async + completable futures
-   // 4: completable Future. thenApply( mult 2).exceptionally(-1)
+
 
    @PostConstruct
    public void init() throws ExecutionException, InterruptedException {
