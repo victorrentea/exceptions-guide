@@ -1,4 +1,4 @@
-package org.acme;
+package victor.training.exceptions;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
