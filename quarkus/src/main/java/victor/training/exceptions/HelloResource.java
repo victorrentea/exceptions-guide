@@ -8,16 +8,16 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-@Path("/hello")
+@Path("/")
+@Produces(MediaType.APPLICATION_JSON)
 public class HelloResource {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     public String hello() {
         if (Math.random() > .5) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Someting useful");
         }
-        return "hello3";
+        return "Hello Quarkus! Hi 1-sec restart!";
     }
 }
 
