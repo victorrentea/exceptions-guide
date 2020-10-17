@@ -17,6 +17,7 @@ public class HelloService {
       B b = new B();
       Data data = new Data(new A(b));
       deeper(data);
+      // more code
       return otherService.receive();
    }
 
@@ -26,7 +27,9 @@ public class HelloService {
 
 
    private void deeper(Data data) {
+      // more code
       andDeeper(data);
+      // more code
    }
 
 
@@ -37,7 +40,9 @@ public class HelloService {
 
 
    private void andDeeper(Data data) {
+      // more code
       andEvenDeeper(data);
+      // more code
    }
 
 
@@ -48,7 +53,9 @@ public class HelloService {
 
 
    private void andEvenDeeper(Data data) {
+      // more code
       after1HourOfReading(data);
+      // more code
    }
 
 
