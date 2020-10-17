@@ -17,7 +17,8 @@ public class OtherService {
       try (Reader reader = new FileReader("hello.txt")) {
          this.data = IOUtils.toString(reader);
       }
-      this.data += data.getA().getB().getLabel().toUpperCase();
+      this.data += data.getA().getB().getLabel().substring(0,
+          data.getA().getB().getLabel().indexOf("/"));
    }
 
    public String receive() {
