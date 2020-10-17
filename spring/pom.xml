@@ -21,6 +21,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <!-- supports Java 15 ! -->
+            <version>1.18.16</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
