@@ -11,7 +11,7 @@ import java.io.Reader;
 @Service
 public class OtherService {
 
-   private String data; // demo side-effect. never have state in a @Service!
+   private String data = "no data"; // demo side-effect. never have state in a @Service!
 
    public void send(Data data) throws IOException {
       try (Reader reader = new FileReader("hello.txt")) {
