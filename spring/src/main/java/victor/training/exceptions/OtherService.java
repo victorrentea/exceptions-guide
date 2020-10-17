@@ -1,21 +1,23 @@
 package victor.training.exceptions;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
-import victor.training.exceptions.model.Structure;
+import victor.training.exceptions.model.Data;
 
-import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 
 @Service
 public class OtherService {
 
    private String data; // demo side-effect. never have state in a @Service!
 
-   public void send(Structure struct) throws FileNotFoundException {
-      boolean unexpected = true; //set false
-      if (unexpected) {
-         throw new FileNotFoundException("f.txt");
+   public void send(Data data) throws IOException {
+      try (Reader reader = new FileReader("hello.txt")) {
+         this.data = IOUtils.toString(reader);
       }
-      data = struct.getA().getB().getLabel().toUpperCase();
+      this.data += data.getA().getB().getLabel().toUpperCase();
    }
 
    public String receive() {

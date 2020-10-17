@@ -1,14 +1,10 @@
 package victor.training.exceptions.model;
 
 public class B {
-   private final String label;
+   private String label;
 
-   public B(String label) {
+   public void setLabel(String label) {
       this.label = label;
-   }
-
-   public B() {
-      this(null);
    }
 
    public String getLabel() {

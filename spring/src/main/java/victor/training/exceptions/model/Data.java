@@ -1,9 +1,9 @@
 package victor.training.exceptions.model;
 
-public class Structure {
+public class Data {
    private final A a;
 
-   public Structure(A a) {
+   public Data(A a) {
       this.a = a;
    }
 
