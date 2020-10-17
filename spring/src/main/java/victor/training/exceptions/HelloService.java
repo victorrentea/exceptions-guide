@@ -8,6 +8,7 @@ import victor.training.exceptions.model.Data;
 
 import java.io.IOException;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class HelloService {
