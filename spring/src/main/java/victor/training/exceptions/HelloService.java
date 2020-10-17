@@ -40,6 +40,7 @@ public class HelloService {
 
 
    private void andDeeper(Data data) {
+      long interestingId = data.hashCode();
       // more code
       andEvenDeeper(data);
       // more code
