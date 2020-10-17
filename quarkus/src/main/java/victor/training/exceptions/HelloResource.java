@@ -15,7 +15,7 @@ public class HelloResource {
     @GET
     public String hello() {
         if (Math.random() > .5) {
-            throw new IllegalArgumentException("Someting useful");
+            throw new IllegalArgumentException("Useful debug info");
         }
         return "Hello Quarkus! Hi 1-sec restart!";
     }
