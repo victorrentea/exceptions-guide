@@ -12,8 +12,8 @@ import static java.util.stream.Collectors.toList;
 public class ExceptionsVsStreams {
 
    public static void main(String[] args) {
-      List<String> list = asList("2020-10-10", "2020-10-x11", "2020-10-x11", "2020-10-x11", "2020-10-11");
-      System.out.println(new ExceptionsVsStreams().parseDates(list));
+      List<String> list = asList("2020-10-10", "2020-10-a", "2020-10-b", "2020-10-c", "2020-10-15");
+      System.out.println(parseDates(list));
    }
 
    public List<Date> parseDates(List<String> dateStrings) {
