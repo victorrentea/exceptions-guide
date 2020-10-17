@@ -12,10 +12,9 @@ import javax.ws.rs.ext.Provider;
 public class HelloResource {
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public String hello() {
-
-        if (true) {
+        if (Math.random() > .5) {
             throw new IllegalArgumentException();
         }
         return "hello3";
