@@ -2,6 +2,9 @@ package victor.training.exceptions;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import victor.training.exceptions.model.A;
+import victor.training.exceptions.model.B;
+import victor.training.exceptions.model.Structure;
 
 import java.io.FileNotFoundException;
 
@@ -12,7 +15,7 @@ public class HelloService {
 
    public String hello() {
       try {
-         otherService.send();
+         otherService.send(new Structure(new A(new B())));
       } catch (FileNotFoundException e) {
          // Argh! Leave me alone!
       }
