@@ -16,7 +16,7 @@ public class ExceptionsVsStreams {
       System.out.println(parseDates(list));
    }
 
-   public List<Date> parseDates(List<String> dateStrings) {
+   public static List<Date> parseDates(List<String> dateStrings) {
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
       // dateStrings.stream()
