@@ -13,7 +13,7 @@ public class OtherService {
 
    private String data = "no data"; // demo side-effect. never have state in a @Service!
 
-   public void send(Data data) throws IOException {
+   public void save(Data data) throws IOException {
       try (Reader reader = new FileReader("hello.txt")) {
          this.data = IOUtils.toString(reader);
       }
