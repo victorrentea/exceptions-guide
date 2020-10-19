@@ -11,14 +11,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 @SpringBootApplication
 @Slf4j
-public class SpringApp implements AsyncConfigurer {
+public class SpringApp {
    public static void main(String[] args) {
       SpringApplication.run(SpringApp.class, args);
    }
 
-   @Override
-   public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-      return (ex, method, params) -> System.err.println("Async exception " + ex);
-   }
 }
 
