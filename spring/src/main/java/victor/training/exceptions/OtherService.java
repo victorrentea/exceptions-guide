@@ -14,17 +14,18 @@ import java.io.Reader;
 public class OtherService {
    private static final Logger log = LoggerFactory.getLogger(OtherService.class);
 
-   private String data; // demo side-effect. never have state in a @Service!
+   private String greeting; // demo side-effect. never have state in a @Service!
 
    public void save(Data data) throws IOException {
       try (Reader reader = new FileReader("spring/helo.txt")) {
-         this.data = IOUtils.toString(reader);
+         greeting = IOUtils.toString(reader);
          log.info("Read file OK");
       }
-      this.data += data.getA().getB().getLabel().toUpperCase();
+      greeting += data.getA().getB().getLabel().toUpperCase();
+      log.info("Updated greeting to " + greeting);
    }
 
    public String receive() {
-      return data;
+      return greeting;
    }
 }
