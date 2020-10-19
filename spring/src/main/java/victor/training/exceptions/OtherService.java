@@ -21,8 +21,7 @@ public class OtherService {
          this.data = IOUtils.toString(reader);
          log.info("Read file");
       }
-      this.data += data.getA().getB().getLabel().substring(0,
-          data.getA().getB().getLabel().indexOf("/"));
+      this.data += data.getA().getB().getLabel().toUpperCase();
    }
 
    public String receive() {
