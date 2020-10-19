@@ -23,7 +23,7 @@ public class HelloService {
       Data data = new Data(new A(b));
       deeper(data);
       // more code
-      return otherService.receive();
+      return "Greeting: " + otherService.receive();
    }
 
 
