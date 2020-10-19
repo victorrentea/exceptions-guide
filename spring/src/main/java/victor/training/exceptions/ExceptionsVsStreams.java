@@ -11,6 +11,7 @@ import static java.util.stream.Collectors.toList;
 
 public class ExceptionsVsStreams {
 
+   private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // WARNING: NOT Thread-safe!
    public static void main(String[] args) {
       List<String> list = asList("2020-10-10", "2020-10-a", "2020-10-b", "2020-10-c", "2020-10-15");
       System.out.println(parseDates(list));
