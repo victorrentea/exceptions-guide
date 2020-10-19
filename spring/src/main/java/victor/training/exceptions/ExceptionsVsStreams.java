@@ -19,8 +19,6 @@ public class ExceptionsVsStreams {
    public static List<Date> parseDates(List<String> dateStrings) {
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-      // dateStrings.stream()
-
-      return null;
+      return null;// dateStrings.stream()
    }
 }
