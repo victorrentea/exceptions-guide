@@ -44,7 +44,7 @@ public class HelloService {
 
 
    private void andDeeper(Data data) {
-      Long interestingId = 13L;
+      Long interestingId = 13L; //critical for understanding the error
       // more code
       andEvenDeeper(data);
       // more code
