@@ -19,7 +19,7 @@ public class OtherService {
    public void save(Data data) throws IOException {
       try (Reader reader = new FileReader("spring/helo.txt")) {
          this.data = IOUtils.toString(reader);
-         log.info("Read file");
+         log.info("Read file OK");
       }
       this.data += data.getA().getB().getLabel().toUpperCase();
    }
