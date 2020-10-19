@@ -18,7 +18,7 @@ class HelloController {
    private final HelloService service;
 
    @GetMapping
-   public String hello(@RequestParam String name) {
+   public String hello(@RequestParam(required = false) String name) {
       return service.hello(name);
    }
 }

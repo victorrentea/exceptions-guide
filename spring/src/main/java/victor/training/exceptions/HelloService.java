@@ -19,7 +19,6 @@ public class HelloService {
 
    public String hello(String name) {
       B b = new B();
-      b.setInitials(name.toUpperCase().substring(0,1));
       Data data = new Data(new A(b));
       deeper(data);
       // more code
@@ -43,11 +42,9 @@ public class HelloService {
 
 
 
-   @Autowired
-   private UserRepo userRepo;
 
    private void andDeeper(Data data) {
-      Long userId = userRepo.findIdByUsername(data.getA().getB().getLabel());
+      Long interestingId = 13L;
       // more code
       andEvenDeeper(data);
       // more code
