@@ -77,7 +77,7 @@ public class HelloService {
       try {
          otherService.save(data);
       } catch (Exception e) {
-         // Argh! Leave me alone!
+         // FileNotFound is imposible! Argh! Leave me alone!
       }
    }
 }
