@@ -17,6 +17,7 @@ public class OtherService {
    private String greeting; // demo side-effect. never have state in a @Service!
 
    public void save(Data data) throws IOException {
+      log.info("Start Save");
       try (Reader reader = new FileReader("spring/helo.txt")) {
          greeting = IOUtils.toString(reader);
          log.info("Read file OK");
