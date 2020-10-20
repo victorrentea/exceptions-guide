@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import victor.training.exceptions.MyException.ErrorCode;
 import victor.training.exceptions.model.A;
 import victor.training.exceptions.model.B;
 import victor.training.exceptions.model.Data;
@@ -14,13 +15,15 @@ import victor.training.exceptions.model.Data;
 import java.io.IOException;
 import java.util.List;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 public class HelloService {
    private final OtherService otherService;
 
    public String hello(String name) {
+      if (name == null) {
+         throw new MyException(ErrorCode.NO_NAME_PARAM);
+      }
       B b = new B();
       b.setLabel(name);
       Data data = new Data(new A(b));
