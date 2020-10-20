@@ -76,7 +76,7 @@ public class HelloService {
    private void after1HourOfReading(Data data) {
       try {
          otherService.save(data);
-      } catch (IOException e) {
+      } catch (Exception e) {
          // Argh! Leave me alone!
       }
    }
