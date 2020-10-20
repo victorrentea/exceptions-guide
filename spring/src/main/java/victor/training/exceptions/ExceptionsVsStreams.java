@@ -1,10 +1,13 @@
 package victor.training.exceptions;
 
 import io.vavr.control.Try;
+import org.jooq.lambda.Unchecked;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Function;
 
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
@@ -20,6 +23,6 @@ public class ExceptionsVsStreams {
 
    public static List<Date> parseDates(List<String> dateStrings) {
 
-      return null; // TODO
+      return dateStrings.stream().map(Unchecked.function(s -> sdf.parse(s))).collect(toList()); // TODO
    }
 }

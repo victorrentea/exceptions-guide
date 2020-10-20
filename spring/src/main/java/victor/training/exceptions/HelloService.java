@@ -1,7 +1,10 @@
 package victor.training.exceptions;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import victor.training.exceptions.model.A;
@@ -19,6 +22,7 @@ public class HelloService {
 
    public String hello(String name) {
       B b = new B();
+      b.setLabel(name);
       Data data = new Data(new A(b));
       deeper(data);
       // more code
@@ -72,12 +76,10 @@ public class HelloService {
 
 
 
+   private static final Logger log = LoggerFactory.getLogger(HelloService.class);
 
+   @SneakyThrows
    private void after1HourOfReading(Data data) {
-      try {
-         otherService.save(data);
-      } catch (Exception e) {
-         // FileNotFound is imposible! Argh! Leave me alone!
-      }
+      otherService.save(data);
    }
 }
