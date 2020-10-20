@@ -1,6 +1,7 @@
 package victor.training.exceptions;
 
 import io.vavr.control.Try;
+import lombok.SneakyThrows;
 import org.jooq.lambda.Unchecked;
 
 import java.text.ParseException;
@@ -23,6 +24,11 @@ public class ExceptionsVsStreams {
 
    public static List<Date> parseDates(List<String> dateStrings) {
 
-      return dateStrings.stream().map(Unchecked.function(s -> sdf.parse(s))).collect(toList()); // TODO
+      return dateStrings.stream().map(ExceptionsVsStreams::parse).collect(toList()); // TODO
+   }
+
+   @SneakyThrows
+   private static Date parse(String s) {
+      return sdf.parse(s);
    }
 }
