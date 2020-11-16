@@ -11,7 +11,7 @@ import java.util.function.Function;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 
-public class ExceptionsVsStreams {
+public class Streams {
 
    public static void main(String[] args) {
       List<String> dateList = asList("2020-10-11", "2020-nov-12", "2020-12-01");
