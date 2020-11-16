@@ -18,6 +18,7 @@ public class ExceptionsVsStreams {
       SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
       // TODO parse and print all dates
+
    }
 
 }
