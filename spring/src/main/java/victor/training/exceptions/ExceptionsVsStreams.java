@@ -17,10 +17,7 @@ public class ExceptionsVsStreams {
       List<String> dateList = asList("2020-10-11", "2020-nov-12", "2020-12-01");
       SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-      // ====== jool ======
-
-
-      // ====== vavr: Accept if >= 50% parseable =====
+      // TODO parse and print all dates
    }
 
 }
