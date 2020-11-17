@@ -1,6 +1,7 @@
 package victor.training.exceptions;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.time.DateUtils;
 import victor.training.exceptions.model.Customer;
 import victor.training.exceptions.model.MemberCard;
 import victor.training.exceptions.model.Order;
@@ -23,6 +24,6 @@ public class Main {
    }
 
    private static Date yesterday() {
-      return new Date(System.currentTimeMillis() - 1000 * 60 * 60 * 24);
+      return DateUtils.addDays(new Date(), -1);
    }
 }
