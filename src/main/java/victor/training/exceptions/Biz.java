@@ -14,7 +14,7 @@ public class Biz {
       // TODO offer date < Config.getLastPromoDate()
       if (order.getOfferDate().before(new Date())) {
          System.out.println("APPLYING DISCOUNT");
-         order.setPrice(order.getPrice() * (100 - 2 * customer.getMemberCard().getFidelityDiscount()));
+         order.setPrice(order.getPrice() * (100 - 2 * customer.getMemberCard().getFidelityDiscount()) / 100);
       }
    }
 }
@@ -61,5 +61,10 @@ class MemberCard {
 
    public int getFidelityDiscount() {
       return fidelityDiscount;
+   }
+
+   public MemberCard setFidelityDiscount(int fidelityDiscount) {
+      this.fidelityDiscount = fidelityDiscount;
+      return this;
    }
 }
