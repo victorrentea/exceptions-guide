@@ -18,6 +18,8 @@ public class Biz {
       if (order.getOfferDate().before(DateUtils.addDays(new Date(), 1))) {
          System.out.println("APPLYING DISCOUNT");
          order.setPrice(order.getPrice() * (100 - 2 * customer.getMemberCard().getFidelityDiscount()) / 100);
+      } else {
+         System.out.println("NO DISCOUNT");
       }
    }
 }
