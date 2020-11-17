@@ -17,13 +17,9 @@ public class Main {
       Customer customer = new Customer().setMemberCard(new MemberCard().setFidelityDiscount(2));
       Order order = new Order()
           .setPrice(1000)
-          .setOfferDate(yesterday());
+          .setOfferDate(new Date());
 
       biz.applyDiscount(order, customer);
       System.out.println("Discounted Price " + order.getPrice());
-   }
-
-   private static Date yesterday() {
-      return DateUtils.addDays(new Date(), -1);
    }
 }

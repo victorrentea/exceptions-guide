@@ -15,4 +15,6 @@ public class Config {
       SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
       return format.parse(System.getProperty("last.promo.date"));
    }
+
+
 }
