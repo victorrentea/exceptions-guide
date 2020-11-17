@@ -11,6 +11,7 @@ import java.util.Date;
 public class BizTest {
    @Test
    public void test() {
+      System.setProperty("last.promo.date", "2021-02-30");
       Biz biz = new Biz();
 
       Customer customer = new Customer().setMemberCard(new MemberCard().setFidelityDiscount(2));
