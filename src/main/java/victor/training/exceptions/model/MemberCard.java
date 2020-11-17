@@ -1,7 +1,7 @@
 package victor.training.exceptions.model;
 
 public class MemberCard {
-   private int fidelityDiscount;
+   private int fidelityDiscount = 1;
 
    public int getFidelityDiscount() {
       return fidelityDiscount;
