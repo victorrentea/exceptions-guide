@@ -11,8 +11,8 @@ import java.util.Properties;
 /** @author Alan T. */
 public class Config {
 
-   public static Date getLastPromoDate(){
-      // TODO system property
-      return new Date();
+   public static Date getLastPromoDate() throws ParseException {
+      SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+      return format.parse(System.getProperty("last.promo.date"));
    }
 }
