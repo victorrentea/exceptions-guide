@@ -1,30 +1,26 @@
 package victor.training.exceptions;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Date;
 
-/** @author Bill G. */
+/**
+ * @author Bill G.
+ */
 @Service
 public class Biz {
 
    public void applyDiscount(Order order, Customer customer) {
-      try {
-         if (order.getCreationDate().before(Config.getLastPromoDate())) {
-            System.out.println("APPLYING DISCOUNT");
-            order.setPrice(order.getPrice() * (100 - 2 * customer.getMemberCard().getFidelityDiscount()));
-         }
-      } catch (IOException | ParseException e) {
-         e.printStackTrace();
+      if (order.getOfferDate().before(Config.getLastPromoDate())) {
+         System.out.println("APPLYING DISCOUNT");
+         order.setPrice(order.getPrice() * (100 - 2 * customer.getMemberCard().getFidelityDiscount()));
       }
    }
 }
+
 class Order {
    private int price;
-   private Date creationDate;
+   private Date offerDate;
 
    public int getPrice() {
       return price;
@@ -35,10 +31,16 @@ class Order {
       return this;
    }
 
-   public Date getCreationDate() {
-      return creationDate;
+   public Date getOfferDate() {
+      return offerDate;
+   }
+
+   public Order setOfferDate(Date offerDate) {
+      this.offerDate = offerDate;
+      return this;
    }
 }
+
 class Customer {
    private String name;
    private MemberCard memberCard;
@@ -46,7 +48,13 @@ class Customer {
    public MemberCard getMemberCard() {
       return memberCard;
    }
+
+   public Customer setMemberCard(MemberCard memberCard) {
+      this.memberCard = memberCard;
+      return this;
+   }
 }
+
 class MemberCard {
    private int fidelityDiscount;
 
