@@ -7,7 +7,7 @@ public class Main {
    public static void main(String[] args) {
       Order order = new Order().setPrice(1000);
 
-      new Biz().applyDiscount(new Order().setPrice(1000), new Customer());
+      new Biz().applyDiscount(order, new Customer());
 
       System.out.println("Discounted Price " + order.getPrice());
    }
