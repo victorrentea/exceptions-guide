@@ -13,16 +13,11 @@ import victor.training.exceptions.model.Order;
 @SpringBootApplication
 @Slf4j
 @RequiredArgsConstructor
+@RestController
 public class SpringBoot  {
    public static void main(String[] args) {
       SpringApplication.run(SpringBoot.class, args);
    }
-}
-
-@Slf4j
-@RestController
-@RequiredArgsConstructor
-class ExceptionalController {
    private final Biz biz;
    @GetMapping
    public void exceptional() {
