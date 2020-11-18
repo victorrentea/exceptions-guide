@@ -21,6 +21,6 @@ public class SpringBoot  {
    private final Biz biz;
    @GetMapping
    public void exceptional() {
-      biz.applyDiscount(new Order(), new Customer());
+      // TODO copy from main
    }
 }
