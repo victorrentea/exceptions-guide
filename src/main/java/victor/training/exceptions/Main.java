@@ -9,6 +9,6 @@ public class Main {
 
       new Biz().applyDiscount(order, new Customer());
 
-      System.out.println("Discounted Price " + order.getPrice());
+      System.out.println("Final Price " + order.getPrice());
    }
 }
