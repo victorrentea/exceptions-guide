@@ -13,14 +13,5 @@ public class InProduction {
    private static Biz biz = new Biz();
 
    public static void main(String[] args) {
-      try {
-         Order order = new Order().setOfferDate(new Date()).setPrice(1000);
-
-         biz.applyDiscount(order, new Customer().setMemberCard(new MemberCard()));
-
-         System.out.println("Final Price " + order.getPrice());
-      } catch (Exception e) {
-         log.error(e.getMessage(), e);
-      }
    }
 }

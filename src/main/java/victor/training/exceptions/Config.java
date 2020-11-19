@@ -1,6 +1,7 @@
 package victor.training.exceptions;
 
 import org.springframework.stereotype.Service;
+import victor.training.exceptions.MyException.ErrorCode;
 
 import java.io.*;
 import java.text.ParseException;
@@ -12,6 +13,7 @@ import java.util.Properties;
 public class Config {
 
    public static Date getLastPromoDate() {
+      long userInputUsefulToReportBackToHim = 1;
 
       try {
          Properties properties = new Properties();
@@ -19,9 +21,9 @@ public class Config {
             properties.load(reader);
          }
          SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-         return format.parse(System.getProperty("last.promo.date"));
+         return format.parse(properties.getProperty("last.promo.date"));
       } catch (IOException | ParseException e) {
-         throw new RuntimeException(e);
+         throw new MyException(e);
       }
    }
 
