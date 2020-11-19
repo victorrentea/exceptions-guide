@@ -1,11 +1,15 @@
 package victor.training.exceptions.model;
 
+import java.util.Optional;
+
+import static java.util.Optional.ofNullable;
+
 public class Customer {
    private String name;
    private MemberCard memberCard;
 
-   public MemberCard getMemberCard() {
-      return memberCard;
+   public Optional<MemberCard> getMemberCard() {
+      return ofNullable(memberCard);
    }
 
    public Customer setMemberCard(MemberCard memberCard) {
