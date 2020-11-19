@@ -15,12 +15,12 @@ import java.util.Date;
 public class Biz {
 
    public void applyDiscount(Order order, Customer customer) {
-      if (order.getOfferDate().before(Config.getLastPromoDate())) {
-         System.out.println("APPLYING DISCOUNT");
-         order.setPrice(order.getPrice() * (100 - 2 * customer.getMemberCard().getFidelityDiscount()) / 100);
-      } else {
-         System.out.println("NO DISCOUNT");
-      }
+         if (order.getOfferDate().before(Config.getLastPromoDate())) {
+            System.out.println("APPLYING DISCOUNT");
+            order.setPrice(order.getPrice() * (100 - 2 * customer.getMemberCard().getFidelityDiscount()) / 100);
+         } else {
+            System.out.println("NO DISCOUNT");
+         }
    }
 }
 

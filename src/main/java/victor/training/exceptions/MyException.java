@@ -1,8 +1,17 @@
 package victor.training.exceptions;
 
+
+class MyRecoverableException extends MyException {
+
+   public MyRecoverableException(Throwable cause, Object... params) {
+      super(ErrorCode.RECOVERABLE_ERR1, cause, params);
+   }
+}
+
 public class MyException extends RuntimeException {
    public enum ErrorCode {
       GENERAL,
+      RECOVERABLE_ERR1,
       BAD_CONFIG;
 
    }

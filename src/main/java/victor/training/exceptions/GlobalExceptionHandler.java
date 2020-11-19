@@ -6,6 +6,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import victor.training.exceptions.MyException.ErrorCode;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,13 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-   @ExceptionHandler(RuntimeException.class)
+   @ExceptionHandler(Exception.class)
    @ResponseStatus
-   public String handleRuntime(RuntimeException e) {
-      log.error("Unexpected booboo", e);
-      return e.getMessage();
+   public String handleRuntime(Exception e, HttpServletRequest request) {
+      String userMessage = messageSource.getMessage(ErrorCode.GENERAL.name(), null, request.getLocale());
+      log.error("Unexpected " + userMessage, e);
+      return userMessage;
    }
-
    private final MessageSource messageSource;
 
    @ExceptionHandler(MyException.class)
