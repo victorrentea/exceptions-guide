@@ -1,10 +1,17 @@
 package victor.training.exceptions.model;
 
 import java.util.Date;
+import java.util.Objects;
+
+import static java.util.Objects.requireNonNull;
 
 public class Order {
    private int price;
    private Date offerDate;
+
+   public Order(Date offerDate) {
+      this.offerDate = requireNonNull(offerDate);
+   }
 
    public int getPrice() {
       return price;
@@ -19,8 +26,8 @@ public class Order {
       return offerDate;
    }
 
-   public Order setOfferDate(Date offerDate) {
-      this.offerDate = offerDate;
-      return this;
-   }
+//   public Order setOfferDate(Date offerDate) {
+//      this.offerDate = offerDate;
+//      return this;
+//   }
 }
