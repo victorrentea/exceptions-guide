@@ -14,6 +14,7 @@ import java.util.Properties;
 public class Config {
 
    public static Date getLastPromoDate() {
+      long keyDebugId = 13;
       try{
          Properties props = new Properties();
          try (FileReader reader = new FileReader("config.properties")) {
@@ -22,8 +23,7 @@ public class Config {
          SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
          return format.parse(props.getProperty("last.promo.date"));
       } catch (ParseException | IOException e) {
-         log.error(e.getMessage(), e);
-         throw new RuntimeException(e);
+         throw new RuntimeException("For id: " + keyDebugId, e);
       }
    }
 
