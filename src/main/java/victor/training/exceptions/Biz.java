@@ -24,7 +24,7 @@ public class Biz {
             System.out.println("NO DISCOUNT");
          }
       } catch (Exception e) {
-         // TODO
+         e.printStackTrace();
       }
    }
 }
