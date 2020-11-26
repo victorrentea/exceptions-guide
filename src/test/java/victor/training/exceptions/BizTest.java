@@ -19,7 +19,7 @@ public class BizTest {
       Customer customer = new Customer()
           .setMemberCard(new MemberCard()
               .setFidelityDiscount(2));
-      Order order = new Order(new Date())
+      Order order = new Order().setOfferDate(new Date())
           .setPrice(1000);
 
       biz.applyDiscount(order, customer);
