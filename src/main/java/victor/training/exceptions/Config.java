@@ -24,7 +24,7 @@ public class Config {
          SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
          return format.parse(props.getProperty("last.promo.date"));
       } catch (ParseException | IOException e) {
-         throw new MyException(ErrorCode.BAD_CONFIG, e);
+         throw new MyException(ErrorCode.BAD_CONFIG, e, keyDebugId);
       }
    }
 

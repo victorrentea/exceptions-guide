@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
    @ExceptionHandler(MyException.class)
    @ResponseStatus
    public String handleMyException(MyException exception, HttpServletRequest request) {
-      String userMessage = messageSource.getMessage(exception.getCode().name(), null, request.getLocale());
+      String userMessage = messageSource.getMessage(exception.getCode().name(), exception.getParams(), request.getLocale());
       log.error(userMessage, exception);
       return userMessage;
    }
