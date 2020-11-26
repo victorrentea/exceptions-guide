@@ -11,13 +11,17 @@ import java.util.Properties;
 /** @author Alan T. */
 public class Config {
 
-   public static Date getLastPromoDate() throws ParseException, IOException {
-      Properties props = new Properties();
-      try (FileReader reader = new FileReader("config.properties")) {
-         props.load(reader);
+   public static Date getLastPromoDate() {
+      try{
+         Properties props = new Properties();
+         try (FileReader reader = new FileReader("config.properties")) {
+            props.load(reader);
+         }
+         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+         return format.parse(props.getProperty("last.promo.date"));
+      } catch (ParseException | IOException e) {
+         throw new RuntimeException(e);
       }
-      SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-      return format.parse(props.getProperty("last.promo.date"));
    }
 
 
