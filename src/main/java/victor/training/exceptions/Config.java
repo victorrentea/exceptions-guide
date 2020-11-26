@@ -2,6 +2,7 @@ package victor.training.exceptions;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import victor.training.exceptions.MyException.ErrorCode;
 
 import java.io.*;
 import java.text.ParseException;
@@ -23,7 +24,7 @@ public class Config {
          SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
          return format.parse(props.getProperty("last.promo.date"));
       } catch (ParseException | IOException e) {
-         throw new RuntimeException("For id: " + keyDebugId, e);
+         throw new MyException(ErrorCode.BAD_CONFIG, e);
       }
    }
 
