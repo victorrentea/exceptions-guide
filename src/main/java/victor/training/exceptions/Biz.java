@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import victor.training.exceptions.model.Customer;
 import victor.training.exceptions.model.Order;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 
@@ -22,7 +23,7 @@ public class Biz {
          } else {
             System.out.println("NO DISCOUNT");
          }
-      } catch (ParseException e) {
+      } catch (Exception e) {
          // TODO
       }
    }
