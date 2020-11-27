@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import victor.training.exceptions.MyException.ErrorCode;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,6 +24,14 @@ public class GlobalExceptionHandler {
    @ResponseStatus
    public String handleMyException(MyException exception, HttpServletRequest request) {
       String userMessage = messageSource.getMessage(exception.getCode().name(), exception.getParams(), request.getLocale());
+      log.error(userMessage, exception);
+      return userMessage;
+   }
+
+   @ExceptionHandler(RuntimeException.class)
+   @ResponseStatus
+   public String handleRuntimeException(RuntimeException exception, HttpServletRequest request) {
+      String userMessage = messageSource.getMessage(ErrorCode.GENERAL.name(), null, request.getLocale());
       log.error(userMessage, exception);
       return userMessage;
    }
