@@ -24,7 +24,7 @@ public class SpringBoot  {
    private final Biz biz;
    @GetMapping
    public void exceptional() {
-      Order order = new Order().setOfferDate(new Date()).setPrice(1000);
+      Order order = new Order(new Date()).setPrice(1000);
 
       biz.applyDiscount(order, new Customer().setMemberCard(new MemberCard()));
 
