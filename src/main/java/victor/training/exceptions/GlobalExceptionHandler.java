@@ -28,9 +28,9 @@ public class GlobalExceptionHandler {
       return userMessage;
    }
 
-   @ExceptionHandler(RuntimeException.class)
+   @ExceptionHandler(Exception.class)
    @ResponseStatus
-   public String handleRuntimeException(RuntimeException exception, HttpServletRequest request) {
+   public String handleRuntimeException(Exception exception, HttpServletRequest request) {
       String userMessage = messageSource.getMessage(ErrorCode.GENERAL.name(), null, request.getLocale());
       log.error(userMessage, exception);
       return userMessage;
