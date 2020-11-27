@@ -3,6 +3,7 @@ package victor.training.exceptions;
 import io.vavr.control.Try;
 import org.jooq.lambda.Unchecked;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,15 @@ public class Streams {
       List<String> dateList = asList("2020-10-11", "2020-nov-12", "2020-12-01");
       SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-      // TODO parse and print all dates
+      List<Date> dates = dateList.stream().map(s -> {
+         try {
+            return format.parse(s);
+         } catch (ParseException e) {
+            throw new RuntimeException(e);
+         }
+      }).collect(toList());
+
+      System.out.println(dates);
 
    }
 
