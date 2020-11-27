@@ -1,5 +1,6 @@
 package victor.training.exceptions;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import victor.training.exceptions.MyException.ErrorCode;
@@ -14,18 +15,14 @@ import java.util.Properties;
 @Slf4j
 public class Config {
 
+   @SneakyThrows
    public static Date getLastPromoDate() {
-      long keyDebugId = 13;
-      try{
-         Properties props = new Properties();
-         try (FileReader reader = new FileReader("config.properties")) {
-            props.load(reader);
-         }
-         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-         return format.parse(props.getProperty("last.promo.date"));
-      } catch (ParseException | IOException e) {
-         throw new MyException(ErrorCode.BAD_CONFIG, e, keyDebugId);
+      Properties props = new Properties();
+      try (FileReader reader = new FileReader("config.properties")) {
+         props.load(reader);
       }
+      SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+      return format.parse(props.getProperty("last.promo.date"));
    }
 
 
