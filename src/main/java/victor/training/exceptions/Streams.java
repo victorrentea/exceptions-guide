@@ -1,10 +1,5 @@
 package victor.training.exceptions;
 
-import io.vavr.control.Try;
-import lombok.SneakyThrows;
-import org.jooq.lambda.Unchecked;
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -19,13 +14,24 @@ public class Streams {
       List<String> dateList = asList("2020-10-11", "2020-nov-12", "2020-12-01");
       SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-      List<Date> dates = dateList.stream().map(s -> uglyParse(format, s)).collect(toList());
+      ThrowingFunction<String, Date> p = s -> format.parse(s);
+      Function<String, Date> f = wrapAsRuntime(p); // TODO
+      List<Date> dates = dateList.stream().map(f).collect(toList());
       System.out.println(dates);
    }
 
-   @SneakyThrows
-   private static Date uglyParse(SimpleDateFormat format, String s) {
-      return format.parse(s);
+   private static <T,R> Function<T, R> wrapAsRuntime(ThrowingFunction<T, R> p) {
+      return t -> {
+         try {
+            return p.apply(t);
+         } catch (Exception e) {
+            throw new RuntimeException(e);
+         }
+      };
+   }
+
+   interface ThrowingFunction<T,R> {
+      R apply(T t) throws Exception;
    }
 
 }
