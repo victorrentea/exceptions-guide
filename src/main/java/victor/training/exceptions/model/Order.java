@@ -8,8 +8,13 @@ import java.util.Objects;
 import static java.util.Objects.requireNonNull;
 
 public class Order {
+   private int id;
    private int price;
    private Date offerDate;
+
+   public int getId() {
+      return id;
+   }
 
    public Order(Date offerDate) {
       setOfferDate(offerDate);
