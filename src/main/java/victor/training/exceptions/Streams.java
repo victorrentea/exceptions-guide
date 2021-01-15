@@ -17,20 +17,11 @@ public class Streams {
       List<String> dateList = asList("2020-10-11", "2020-nov-12", "2020-12-01");
       SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-      // TODO
-      List<Try<Date>> tries = dateList.stream().map(s -> tryParse(format, s)).collect(toList());
+      List<Date> dates = dateList.stream().map(Unchecked.function(format::parse)).collect(toList());
 
-      double successRatio = tries.stream().mapToInt(t -> t.isSuccess() ? 1 : 0).average().orElse(0);
 
-      if (successRatio > .5) {
-         List<Date> dates = tries.stream().filter(Try::isSuccess).map(Try::get).collect(toList());
-         System.out.println(dates);
-      }
+      // TODO parse and print all dates
 
-   }
-
-   private static Try<Date> tryParse(SimpleDateFormat format, String s) {
-      return Try.of(() -> format.parse(s));
    }
 
 }
