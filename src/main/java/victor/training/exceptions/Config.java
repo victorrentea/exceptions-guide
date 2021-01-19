@@ -13,6 +13,7 @@ public class Config {
 
    public static Date getLastPromoDate() throws ParseException {
       SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+      // TODO properties.load("config.properties");
       return format.parse(System.getProperty("last.promo.date"));
    }
 

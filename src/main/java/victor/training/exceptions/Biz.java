@@ -14,8 +14,8 @@ import java.util.Date;
 public class Biz {
 
    public void applyDiscount(Order order, Customer customer) {
-      // TODO offer date < Config.getLastPromoDate()
-      if (order.getOfferDate().before(DateUtils.addDays(new Date(), 1))) {
+      Date endOfSale = null; // TODO call Config.getLastPromoDate()
+      if (order.getOfferDate().before(endOfSale)) {
          System.out.println("APPLYING DISCOUNT");
          order.setPrice(order.getPrice() * (100 - 2 * customer.getMemberCard().getFidelityDiscount()) / 100);
       } else {
