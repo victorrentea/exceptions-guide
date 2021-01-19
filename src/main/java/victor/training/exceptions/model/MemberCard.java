@@ -1,14 +1,14 @@
 package victor.training.exceptions.model;
 
 public class MemberCard {
-   private int fidelityDiscount = 1;
+   private int fidelityPoints = 1;
 
-   public int getFidelityDiscount() {
-      return fidelityDiscount;
+   public int getFidelityPoints() {
+      return fidelityPoints;
    }
 
-   public MemberCard setFidelityDiscount(int fidelityDiscount) {
-      this.fidelityDiscount = fidelityDiscount;
+   public MemberCard setFidelityPoints(int fidelityPoints) {
+      this.fidelityPoints = fidelityPoints;
       return this;
    }
 }

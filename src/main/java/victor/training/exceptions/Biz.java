@@ -1,6 +1,5 @@
 package victor.training.exceptions;
 
-import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Service;
 import victor.training.exceptions.model.Customer;
 import victor.training.exceptions.model.Order;
@@ -18,7 +17,7 @@ public class Biz {
       Date endOfSale = null; // TODO call Config.getLastPromoDate()
       if (order.getOfferDate().before(endOfSale)) {
          System.out.println("APPLYING DISCOUNT");
-         order.setPrice(order.getPrice() * (100 - 2 * customer.getMemberCard().getFidelityDiscount()) / 100);
+         order.setPrice(order.getPrice() * (100 - 2 * customer.getMemberCard().getFidelityPoints()) / 100);
       } else {
          System.out.println("NO DISCOUNT");
       }
