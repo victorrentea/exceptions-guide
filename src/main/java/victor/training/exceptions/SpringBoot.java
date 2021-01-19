@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import victor.training.exceptions.model.Customer;
 import victor.training.exceptions.model.Order;
 
+import java.util.Date;
+
 
 @SpringBootApplication
 @Slf4j
@@ -21,6 +23,10 @@ public class SpringBoot  {
    private final Biz biz;
    @GetMapping
    public void exceptional() {
-      // TODO copy from main
+      Order order = new Order(new Date()).setPrice(1000);
+
+      biz.applyDiscount(order, new Customer());
+
+      System.out.println("Final Price " + order.getPrice());
    }
 }
