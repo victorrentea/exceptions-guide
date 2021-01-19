@@ -14,6 +14,7 @@ import java.util.Date;
 public class Biz {
 
    public void applyDiscount(Order order, Customer customer) {
+      System.out.println("START");
       Date endOfSale = null; // TODO call Config.getLastPromoDate()
       if (order.getOfferDate().before(endOfSale)) {
          System.out.println("APPLYING DISCOUNT");
